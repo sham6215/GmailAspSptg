@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    @Styles.Render("~/bundles/bootstrapcss")
+    @Styles.Render("~/bundles/summernotecss")
+    @Styles.Render("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapjs")
+    @Scripts.Render("~/bundles/summernotejs")
+
+</head>
+<body>
+    
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
