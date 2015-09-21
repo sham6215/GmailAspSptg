@@ -104,7 +104,7 @@ namespace GmailApp.Controllers
                 redirectUri = Regex.Replace(result.RedirectUri, @"(:\d{3,5})", "", RegexOptions.Multiline | RegexOptions.IgnoreCase);
                 ///
 
-                return new RedirectResult(result.RedirectUri);
+                return new RedirectResult(redirectUri);
             }
         }
 
