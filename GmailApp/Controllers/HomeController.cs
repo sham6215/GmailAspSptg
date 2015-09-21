@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.IO;
 using System.Reflection;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 using Google.Apis.Auth.OAuth2.Mvc;
 using Google.Apis.Gmail.v1; // Install-Package Google.Apis.Gmail.v1
@@ -95,6 +96,14 @@ namespace GmailApp.Controllers
             }
             else
             {
+                string redirectUri = result.RedirectUri;
+                
+                /// Remove port from the redirect URL.
+                /// This action is needed for http://gmailappasp.apphb.com/ application only.
+                /// Remove it if you hosted solution not on the http://gmailappasp.apphb.com/
+                redirectUri = Regex.Replace(result.RedirectUri, @"(:\d{3,5})", "", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                ///
+
                 return new RedirectResult(result.RedirectUri);
             }
         }
